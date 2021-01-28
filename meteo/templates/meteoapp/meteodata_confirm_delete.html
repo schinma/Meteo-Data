@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <h2>Données Météo</h2>
+  <form method="post">
+      {% csrf_token %}
+      <p>Confirmer la suppression de : "{{ object }}"?</p>
+      <input type="submit" value="Confirmer" class="btn btn-danger">
+      <a class="btn btn-primary" href="{% url 'meteoapp:data-list' %}">Annuler</a>
+  </form>
+
+
+{% endblock %}

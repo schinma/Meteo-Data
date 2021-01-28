@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class='row'>
+    <h2>Données météo</h2>
+</div>
+<div class='row py-4 pl-3'>
+    <a href='{% url "meteoapp:data-create" %}' class="btn btn-primary" >Ajouter une Donnée Météo</a>
+</div>
+
+<form method='get' action='.'>
+    <div class="form-group row">
+        <label for="date-min" class="col-1 col-form-label">Du</label>
+        <div class="col-2">
+        <input type="date" class="form-control form-control-sm" id="date-min" name="date_min">
+    </div>
+    <div class="col-2">
+        <input type="time" class="form-control form-control-sm" id="time-min" name="time_min">
+    </div>
+    </div>
+    <div class="form-group row ">
+        <label for="date-max" class="col-1 col-form-label">Au</label>
+        <div class="col-2">
+            <input type="date" class="form-control form-control-sm" id="date-max" name="date_max">
+        </div>
+        <div class="col-2">
+            <input type="time" class="form-control form-control-sm" id="time-max" name="time_max">
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">Filtrer</button>
+        </div>
+    </div>
+    
+</form>
+
+<table class='table'>
+    <tr>
+        <th>Date</th><th>Pression (mbar)</th><th>Température (degC)</th><th>Humidité (%)</th><th>Vitesse du vent (m/s)</th>
+    </tr>
+    {% for data in object_list %}
+    <tr>
+        <td>{{ data.date|date:"d-m-Y"}} {{ data.date|time:"H:i" }}</td>
+        <td>{{ data.pression }}</td>
+        <td>{{ data.temp }}</td>
+        <td>{{ data.humidity }}</td>
+        <td>{{ data.wind }}</td>
+        <td><a href='{% url "meteoapp:data-update" data.pk %}' class="btn btn-primary btn-sm">Editer</a></td>
+        <td><a href='{% url "meteoapp:data-delete" data.pk %}' class="btn btn-danger btn-sm">Supprimer</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo; premier</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">prec.</a></li>
+    {% endif %}
+        <li class="page-item page-link">Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}. </li>
+    {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">suiv.</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">dernier &raquo;</a></li>
+    {% endif %}
+</ul>
+
+
+{% endblock %}
