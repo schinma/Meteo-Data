@@ -5,7 +5,7 @@
 __pycache__
 meteo/db.sqlite3
 meteo/media
-*/migrations/*
+meteo/*/migrations/*
 
 # Python # 
 *.py[cod] 
