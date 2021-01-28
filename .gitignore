@@ -15,3 +15,22 @@ meteo/*/migrations/*
 meteo/.env
 
 # Vue.js
+meteo-front/.DS_Store
+meteo-front/node_modules
+meteo-front/dist
+
+
+# Log files
+meteo-front/npm-debug.log*
+meteo-front/yarn-debug.log*
+meteo-front/yarn-error.log*
+meteo-front/pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
