@@ -1,0 +1,17 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+meteo/db.sqlite3
+meteo/media
+*/migrations/*
+
+# Python # 
+*.py[cod] 
+*$py.class 
+
+# Environments 
+meteo/.env
+
+# Vue.js
