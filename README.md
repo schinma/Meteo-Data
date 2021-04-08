@@ -1,5 +1,7 @@
 # Meteo-Data
 
+Meteo data full stack project with Django backend and Vue.js frontend for data visualisation
+
 ## Meteo Django back-end
 
 ### Project setup
